@@ -1,11 +1,21 @@
 import React from "react";
-import "./styles.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-export default function App() {
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
-  );
+import Home from "./screens/Home";
+import About from "./screens/About";
+
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route render={() => <p>Page not found.</p>} />
+        </Switch>
+      </Router>
+    );
+  }
 }
+
+export default App;

@@ -1,12 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import App from "./App";
 
-const rootElement = document.getElementById("root");
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import { Provider } from "react-redux";
+import user from "./reducers/userReducer";
+
+const store = createStore(
+  combineReducers({
+    user: user
+  }),
+  applyMiddleware()
+);
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
-  rootElement
+  </Provider>,
+  document.getElementById("root")
 );
