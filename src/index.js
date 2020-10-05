@@ -5,12 +5,13 @@ import App from "./App";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import user from "./reducers/userReducer";
+import thunk from "redux-thunk";
 
 const store = createStore(
   combineReducers({
     user: user
   }),
-  applyMiddleware()
+  applyMiddleware(thunk)
 );
 
 ReactDOM.render(
